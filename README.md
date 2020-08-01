@@ -1,2 +1,2 @@
 # Overwatch_Tracker
-A full-stack app to track a Overwatch user's accomplishments and statistics.
+A full-stack app to track an Overwatch user's accomplishments and statistics.
