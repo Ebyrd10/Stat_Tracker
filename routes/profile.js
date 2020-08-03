@@ -19,6 +19,13 @@ router.get('/:platform/:gamertag', async (req, res) => {
         //waits for a response and saves as data
         const data = await response.json();
 
+        //if there is an error on the api side then return a 'profile not found' message
+        if(data.errors && data.errors.length > 0) {
+            return res.status(404).json({
+                message: 'Profile Not Found'
+            });
+        };
+
         //sends the client the data as a json
         res.json(data);
     } catch (err) {
