@@ -5,6 +5,7 @@ const fetch = require('node-fetch');
 //router.get instead of app.get 
 router.get('/:platform/:gamertag', async (req, res) => {
     try {
+        //include the api key as a header, per tracker.gg's documentation
         const headers = {
         'TRN-Api-Key': process.env.TRACKER_API_KEY
         }
@@ -19,7 +20,7 @@ router.get('/:platform/:gamertag', async (req, res) => {
         //waits for a response and saves as data
         const data = await response.json();
 
-        //if there is an error on the api side then return a 'profile not found' message
+        //if there is an error on the api side then return a 'profile not found' message on a 404 page
         if(data.errors && data.errors.length > 0) {
             return res.status(404).json({
                 message: 'Profile Not Found'
@@ -28,6 +29,8 @@ router.get('/:platform/:gamertag', async (req, res) => {
 
         //sends the client the data as a json
         res.json(data);
+
+    //If there is an error on the server side from this api then respond with a 500 status error
     } catch (err) {
         console.error(err);
         res.status(500).json({
