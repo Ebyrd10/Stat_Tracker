@@ -7,6 +7,11 @@ dotenv.config({path: './config.env'});
 
 const app = express();
 
+//Dev log middleware for dev mode
+if(process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+};
+
 //Profile Routes
 app.use('/api/v1/profile', require('./routes/profile'));
 
