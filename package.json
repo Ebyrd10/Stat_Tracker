@@ -1,5 +1,5 @@
 {
-  "name": "valorant_tracker",
+  "name": "stat_tracker",
   "version": "1.0.0",
   "description": "A full-stack app to track a Valorant user's accomplishments and statistics.",
   "main": "server.js",
