@@ -1,5 +1,6 @@
 <template>
-  <div class='container'>
+  <!-- <div class='container'> -->
+    <div class='main-container'>
     <Header />
     <router-view />
   </div>
@@ -18,7 +19,8 @@ export default {
 
 <style>
 :root {
-  --primary-color: #953036;
+  /* --primary-color: #953036; */
+  --primary-color: #0fe3ff;
 }
 * {
   box-sizing: border-box;
@@ -85,5 +87,16 @@ textarea {
   body {
     background: var(--primary-color);
   }
+}
+
+.main-container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+}
+
+body{
+  margin: 0px;
 }
 </style>

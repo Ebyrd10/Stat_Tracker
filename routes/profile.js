@@ -3,17 +3,17 @@ const router = express.Router();
 const fetch = require('node-fetch');
 
 //router.get instead of app.get 
-router.get('/:platform/:gamertag', async (req, res) => {
+router.get('/:game/:platform/:gamertag', async (req, res) => {
     try {
         //include the api key as a header, per tracker.gg's documentation
         const headers = {
         'TRN-Api-Key': process.env.TRACKER_API_KEY
         }
         //destructuring to get params
-        const { platform, gamertag} = req.params;
+        const { game, platform, gamertag} = req.params;
 
         //a / infront of profile here causes the server error below to fire
-        const response = await fetch(`${process.env.TRACKER_API_URL}profile/${platform}/${gamertag}`, {
+        const response = await fetch(`${process.env.TRACKER_API_URL}${game}/standard/profile/${platform}/${gamertag}`, {
             headers
         });
 
