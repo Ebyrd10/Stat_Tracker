@@ -27,6 +27,8 @@ A full-stack app to track a user's accomplishments and statistics in Apex Legend
 * Concurrently
 * Morgan
 * Nodemon
+* Heroku
+* Vue-Toasted
 
 
 ## Install
