@@ -15,6 +15,15 @@ if(process.env.NODE_ENV === 'development') {
 //Profile Routes
 app.use('/api/v1/profile', require('./routes/profile'));
 
+//Handle production
+if(process.env.NODE_ENV === 'production'){
+    //Set Static Folder
+    app.use(express.static(__dirname + '/public'));
+
+    //Handle Single Page Application
+    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
+}
+
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
