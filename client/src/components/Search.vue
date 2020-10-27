@@ -1,4 +1,6 @@
 <template>
+<div>
+<Example />
   <section class="search">
   <h1>Track Player Stats</h1>
   <form v-on:submit.prevent="onSubmit">
@@ -31,11 +33,17 @@
     </div>
   </form>
     </section>
+</div>
 </template>
 
 <script>
+import Example from './Example'
+
 export default {
     name : 'Search',
+    components: {
+    Example
+  },
     data() {
         return {
             // Sets psn and "" as defaults for the platform and gamertag
