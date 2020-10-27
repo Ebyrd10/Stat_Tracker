@@ -29,7 +29,7 @@ A full-stack app to track a user's accomplishments and statistics in Apex Legend
 * Nodemon
 * Heroku
 * Vue-Toasted
-*Vue Directive Tooltip
+* Vue Directive Tooltip
 
 
 ## Install
