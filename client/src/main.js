@@ -10,6 +10,11 @@ Vue.use(VueToasted, {
   iconPack: 'fontawesome'
 })
 
+//load vue-directive-tooltip for small tooltip popups
+import Tooltip from "vue-directive-tooltip";
+import "vue-directive-tooltip/dist/vueDirectiveTooltip.css";
+Vue.use(ToolTip);
+
 new Vue({
   router,
   render: h => h(App),
