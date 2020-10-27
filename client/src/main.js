@@ -13,7 +13,7 @@ Vue.use(VueToasted, {
 //load vue-directive-tooltip for small tooltip popups
 import Tooltip from "vue-directive-tooltip";
 import "vue-directive-tooltip/dist/vueDirectiveTooltip.css";
-Vue.use(ToolTip);
+Vue.use(Tooltip);
 
 new Vue({
   router,
