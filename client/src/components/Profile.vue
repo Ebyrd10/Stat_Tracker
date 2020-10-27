@@ -17,21 +17,16 @@
             {{profileData.platformInfo.platformUserHandle}}
         </h1>
         <div class="grid">
-        <div>
+        <div v-if="profileData.segments[1].metadata.imageUrl">
             <!-- active legend image -->
             <img :src="profileData.segments[1].metadata.imageUrl" alt="">
         </div>
         <div>
             <ul>
-                <li>
+                <li v-if="profileData.metadata.activeLegendName">
                     <h4>Selected Legend</h4>
                     <p>{{profileData.metadata.activeLegendName}}</p>
                 </li>
-                <!-- <li v-if="profileData.segments[0].stats.season5Wins">
-                    <h4>Season 5 Wins</h4>
-                    <p>{{profileData.segments[0].stats.season5Wins.displayValue}}</p>
-                    <span>({{profileData.segments[0].stats.season5Wins.percentile}}%)</span>
-                </li> -->
                 <li v-if="profileData.segments[0].stats.level">
                     <h4>Apex Level</h4>
                     <p>
