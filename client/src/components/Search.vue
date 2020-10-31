@@ -50,6 +50,12 @@ export default {
             game: 'overwatch',
             platform: "psn",
             gamertag: "",
+            //Desrcibing what platforms are valid for a specific game
+            gameList: [
+                {gameName: 'overwatch', id:0, gamePlatforms: ["psn", "xbl", "battlenet"]},
+                {gameName: 'apex', id:1, gamePlatforms: ["psn", "xbl", "origin"]},
+                {gameName: 'csgo', id:2, gamePlatforms: ["psn", "xbl", "steam"]}
+            ]
         }
     },
     //when the search bar is active, eg. on home screen, show the apex person image
