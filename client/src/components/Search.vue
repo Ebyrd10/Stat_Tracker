@@ -7,9 +7,8 @@
       <div class="form-group">
         <label for="game">Game</label>
         <select name="game" id="game" v-model="game">
-            <option value="overwatch">Overwatch</option>
-            <option value="apex">Apex Legends</option>
-            <option value="csgo">Counter-Strike: Global Offensive</option>
+            <!-- Displays the official game title of all games in the list with an abbreviated lowercase name for the form option value -->
+            <option v-for="(game, id) in gameList" v-bind:key="id" v-bind:value = game.gameName> {{ game.gameTitle }}</option>
         </select>
     </div>
     <div class="form-group">
@@ -50,11 +49,11 @@ export default {
             game: 'overwatch',
             platform: "psn",
             gamertag: "",
-            //Desrcibing what platforms are valid for a specific game
+            //Desrcibing what the names and valid platforms of a game
             gameList: [
-                {gameName: 'overwatch', id:0, gamePlatforms: ["psn", "xbl", "battlenet"]},
-                {gameName: 'apex', id:1, gamePlatforms: ["psn", "xbl", "origin"]},
-                {gameName: 'csgo', id:2, gamePlatforms: ["psn", "xbl", "steam"]}
+                {gameName: 'overwatch', id:0, gameTitle: 'Overwatch', gamePlatforms: ["psn", "xbl", "battlenet"]},
+                {gameName: 'apex', id:1, gameTitle: 'Apex Legends', gamePlatforms: ["psn", "xbl", "origin"]},
+                {gameName: 'csgo', id:2, gameTitle: 'Counter-Strike: Global Offensive', gamePlatforms: ["psn", "xbl", "steam"]}
             ]
         }
     },
