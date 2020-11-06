@@ -8,17 +8,14 @@
         <label for="game">Game</label>
         <select name="game" id="game" v-model="game">
             <!-- Displays the official game title of all games in the list with an abbreviated lowercase name for the form option value -->
-            <option v-for="(game, id) in gameList" v-bind:key="id" v-bind:value = game.gameName> {{ game.gameTitle }}</option>
+            <option v-for="(game, id) in gameList" v-bind:key="id" v-bind:value = game> {{ game.gameTitle }}</option>
         </select>
     </div>
     <div class="form-group">
         <label for="platform"> Platform</label>
         <select name="platform" id="platform" v-model="platform">
-            <option value="psn">Playstation</option>
-            <option value="xbl">Xbox</option>
-            <option value="origin">Origin</option>
-            <option value="battlenet">Battlenet</option>
-            <option value="steam">Steam</option>
+            <!-- Displays the valid platforms for a given game based on the id of the platforms in a game object's gamePlatforms array -->
+            <option v-for="(platform,id) in validPlatforms" v-bind:key="id" v-bind:value = platform.platformName> {{ platform.platformTitle }}</option>
         </select>
     </div>
     <div class="form-group">
@@ -46,17 +43,35 @@ export default {
     data() {
         return {
             // Sets psn and "" as defaults for the platform and gamertag
-            game: 'overwatch',
+            game: {gameName: 'overwatch', id:0, gameTitle: 'Overwatch', gamePlatforms: [0, 1, 2]},
             platform: "psn",
             gamertag: "",
             //Desrcibing what the names and valid platforms of a game
             gameList: [
-                {gameName: 'overwatch', id:0, gameTitle: 'Overwatch', gamePlatforms: ["psn", "xbl", "battlenet"]},
-                {gameName: 'apex', id:1, gameTitle: 'Apex Legends', gamePlatforms: ["psn", "xbl", "origin"]},
-                {gameName: 'csgo', id:2, gameTitle: 'Counter-Strike: Global Offensive', gamePlatforms: ["psn", "xbl", "steam"]}
+                {gameName: 'overwatch', id:0, gameTitle: 'Overwatch', gamePlatforms: [0, 1, 2]},
+                {gameName: 'apex', id:1, gameTitle: 'Apex Legends', gamePlatforms: [0, 1, 3]},
+                {gameName: 'csgo', id:2, gameTitle: 'Counter-Strike: Global Offensive', gamePlatforms: [0, 1, 4]}
+            ],
+            //Describing the possible gaming platforms/serivces that are supported by this app
+            platformList: [
+                {platformName: "psn", id: 0, platformTitle: "Playstation"},
+                {platformName: "xbl", id: 1, platformTitle: "Xbox"},
+                {platformName: "battlenet", id: 2, platformTitle: "Battlenet"},
+                {platformName: "origin", id: 3, platformTitle: "Origin"},
+                {platformName: "steam", id: 4, platformTitle: "Steam"}
             ]
         }
     },
+
+    computed: {
+    validPlatforms() {
+        //filters out the list of gameplatforms stored in the 'game' object in the top level of data
+      return this.game.gamePlatforms.map(platformIndex => {
+         return this.platformList[platformIndex];
+      })
+    }
+  },
+
     //when the search bar is active, eg. on home screen, show the apex person image
     beforeCreate() {
         document.body.className = "body-bg-image";
@@ -70,7 +85,7 @@ export default {
                 });
             } 
             else {
-                this.$router.push(`/profile/${this.game}/${this.platform}/${this.gamertag}`);
+                this.$router.push(`/profile/${this.game.gameName}/${this.platform}/${this.gamertag}`);
             }
         }
     }
